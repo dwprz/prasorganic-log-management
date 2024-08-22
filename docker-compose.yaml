@@ -1,0 +1,11 @@
+services:
+  prasorganic-elasticsearch:
+    container_name: prasorganic-elasticsearch
+    image: elasticsearch:8.15.0 
+    ports:
+      - 9200:9200
+    volumes:
+      - ./script.sh:/tmp/redis.sh
+    command: [ "/tmp/redis.sh", "6379"]
+    user: root
+    restart: on-failure

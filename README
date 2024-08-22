@@ -1,0 +1,13 @@
+# Prasorganic Log Management Service
+
+This project is part of my portfolio prasorganic microservice to showcase my 
+skills in software development.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Docker-image Licenses
+
+- This project uses Elasticsearch, which is licensed under the Elastic License 2.0. For more information, 
+  visit Elastic License (https://github.com/elastic/elasticsearch/blob/main/licenses/ELASTIC-LICENSE-2.0.txt).
