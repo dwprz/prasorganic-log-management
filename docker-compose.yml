@@ -1,0 +1,41 @@
+services:
+  prasorganic-elasticsearch:
+    container_name: prasorganic-elasticsearch
+    image: elasticsearch:8.15.0
+    ports:
+      - 9200:9200
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    volumes:
+      - type: volume
+        source: prasorganic-elasticsearch-data
+        target: /usr/share/elasticsearch/data
+    networks:
+      - prasorganic-log-management-network
+      - prasorganic-network
+    restart: on-failure
+
+  prasorganic-kibana:
+    container_name: prasorganic-kibana
+    image: kibana:8.15.0
+    ports:
+      - 5601:5601
+    networks:
+      - prasorganic-log-management-network
+      - prasorganic-network
+    restart: on-failure
+    depends_on:
+      - prasorganic-elasticsearch
+
+volumes:
+  prasorganic-elasticsearch-data:
+    name: prasorganic-elasticsearch-data
+
+networks:
+  prasorganic-log-management-network:
+    name: prasorganic-log-management-network
+    driver: bridge
+  prasorganic-network:
+    name: prasorganic-network
+    external: true
